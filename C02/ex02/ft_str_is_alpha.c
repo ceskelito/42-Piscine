@@ -6,7 +6,7 @@
 /*   By: rceschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 12:21:29 by rceschel          #+#    #+#             */
-/*   Updated: 2024/07/16 15:30:01 by rceschel         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:09:15 by rceschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,11 @@ int	ft_str_is_alpha(char *str)
 		i++;
 	}
 	return (1);
+}
+
+
+int main()
+{
+	char *str = "aassda";
+	ft_str_is_alpha(str);
 }

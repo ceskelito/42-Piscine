@@ -3,27 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rceschel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abecucci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 15:31:18 by rceschel          #+#    #+#             */
-/*   Updated: 2024/07/18 18:08:39 by rceschel         ###   ########.fr       */
+/*   Created: 2024/07/23 15:59:54 by abecucci          #+#    #+#             */
+/*   Updated: 2024/07/23 18:09:13 by abecucci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
+
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int	i;
-	int	j;
+	unsigned int	i;
+	unsigned int	l;
+	unsigned int	j;
 
+	l = 0;
+	while (dest[l] != '\0' && l < size)
+		l++;
 	j = 0;
+	while (src[j] != '\0')
+		j++;
 	i = 0;
-	while (dest[i] != '\0')
+	if (size == 0 || l == size)
+		return (l + j);
+	while (i < size - l - 1 && src[i] != '\0')
+	{
+		dest[l + i] = src[i];
 		i++;
-	while (j++ < (int)size)
-		if (*src)
-			dest[i++] = *src++;
-	dest[i] = '\0';
-	i = 0;
-	while (dest[i++] != '\0')
-		;
-	return (i - 1);
+	}
+	dest[l + i] = '\0';
+	return (l + j);
 }

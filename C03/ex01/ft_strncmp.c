@@ -6,25 +6,23 @@
 /*   By: rceschel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 14:07:48 by rceschel          #+#    #+#             */
-/*   Updated: 2024/07/18 16:48:39 by rceschel         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:23:18 by rceschel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	if ((int)n < 1)
+	if (n == 0)
 		return (0);
-	while (i < (int)n - 1)
+	while (s1[i] != '\0')
 	{
-		if (*s1 && (*s1 == *s2))
-			s1++;
+		if (i < (n - 1) && (s1[i] == s2[i]))
+			i++;
 		else
-			break ;
-		s2++;
-		i++;
+			return (s1[i] - s2[i]);
 	}
-	return (*s1 - *s2);
+	return (s1[i] - s2[i]);
 }

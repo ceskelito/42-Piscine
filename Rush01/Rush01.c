@@ -1,68 +1,61 @@
 #include "rushlib.h"
+#include <stdio.h>
+int *arr;
+
+int r_pow(int b, int e)
+{
+    if(e == 1)
+        return b;
+    r_pow(b * b, e - 1);
+}
+
+int initialize_grid(char **grid, int side_size)
+{   
+    int i;
+
+    i = 0;
+    grid = (char**) malloc((side_size + 2) * sizeof(char*));
+    while(i < side_size + 2)
+        grid[i++] = malloc((side_size + 2) * sizeof(char));
+    if(grid == NULL)
+        return (3);
+    return (0);
+}
 
 
+int init_and_check_if_return(char **grid, int side_size, char *str, int *arr)
+{
+    int r;
 
-       
-        /* if(col > grid_size || (row > grid_size))
-            return (false); */
-       /* grid[row][col] = str[i]; 
-        else
-            return (false);
-        if(++col > grid_size - 1)
-        {
-            col = 0;
-            row++;
-        } */
+    r = 0;
+    r += initialize_grid(grid, side_size);
+    r += str_to_arr(str, arr, 0);
+    r += input_check(arr);
+    r += input_check(arr);
+   
 
-
+    return (r);
+}
 int main(int argc, char **argv)
 {
     char **grid;
-    char *str;
-    int **colrow;
-    int grid_size = 4;
-
+    //char *str;
+    int side_size = calc_side_size(arr);
+    
     if(argc != 2)
         return 1;
 
-    grid = (char**) malloc (grid_size * sizeof(int));
-    if(grid == NULL)
-        return 3;
+    //str = argv[1];
+
+    if(init_and_check_if_return(grid, side_size, argv[1], arr) != 0)
+        return init_and_check_if_return(grid, side_size, argv[1], arr);
 
     int i = 0;
-    int j =0;
-    while (i < grid_size) 
+
+    while(i < side_size + 2)
     {
-        grid[i] = (int**) malloc (4 * sizeof(int));
-    
+        printf("%s", grid[i]);
+        i++;
     }
-    i = 0;
-    while(i < 4)
-    {
-        while(j < 4)
-        {
-            grid[i][j] = 
-        }
-    }
-    /* olrow = (int**) malloc (4); */
-    if (colrow == NULL)
-        return 3;
-
-    str = argv[1];
-    /* if(!(input_control(str)))
-        return 2; */
-
-   // colrow
-   
-   //grid[][] = setcolrow(str);
-    
-
-    while(*str)
-    {
-        write(1,str++ ,1);
-    }
-
-
-        return 0;
-
+    return 0;
 }

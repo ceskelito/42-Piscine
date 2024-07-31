@@ -3,25 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rceschel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abecucci <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/18 14:47:04 by rceschel          #+#    #+#             */
-/*   Updated: 2024/07/18 14:49:10 by rceschel         ###   ########.fr       */
+/*   Created: 2024/07/23 14:05:50 by abecucci          #+#    #+#             */
+/*   Updated: 2024/07/23 18:07:15 by abecucci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	i;
-	int	j;
+	unsigned int	i;
+	unsigned int	l;
 
-	j = 0;
+	if (nb == 0)
+		return (dest);
+	l = 0;
+	while (dest[l] != '\0')
+		l++;
 	i = 0;
-	while (dest[i] != '\0')
+	while (i < nb && src[i] != '\0')
+	{
+		dest[l + i] = src[i];
 		i++;
-	while (j++ < (int)nb)
-		if (*src)
-			dest[i++] = *src++;
-	dest[i] = '\0';
+	}
+	dest[l + i] = '\0';
 	return (dest);
 }

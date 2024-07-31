@@ -19,7 +19,6 @@ void	char_to_hex(char c)
 	char	printbl;
 
 	hex = "0123456789abcdef";
-	
 }
 void	ft_putstr_non_printable(char *str)
 {
